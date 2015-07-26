@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace deltaKinematics
-{
+namespace deltaKinematics {
 
-    public class classCalibrate
-    {
+    public class classCalibrate {
         public double A;
         public double B;
         public double C;
@@ -97,8 +95,13 @@ namespace deltaKinematics
         public double ZOppTemp5;
         public double delTower;
         public double delOpp;
-        public double diagonalRod
-            ;
+        public double diagonalRod;
+
+        public double motorStepAngle;
+        public double driverMicroStepping;
+        public double beltPitch;
+        public double toothCount;
+
         //RETRIEVE DATA
         /***************************************
         double A = double.TryParse(document.getElementById('A').value);
@@ -196,33 +199,25 @@ namespace deltaKinematics
         double diagonalRod = double.TryParse(document.getElementById('diagonalRod').value);
         *************************/
         //significant figures
-        public static double significantFigures(double d, int digits)
-        {
+        public static double significantFigures(double d, int digits) {
             double scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(d))) + 1);
 
             return scale * Math.Round(d / scale, digits);
         }
 
         //check if values are close to zero, then set them to zero - avoids errors
-        public double checkZero(double value)
-        {
-            if (value > 0 && value < accuracy)
-            {
+        public double checkZero(double value) {
+            if (value > 0 && value < accuracy) {
                 return 0;
-            }
-            else if (value < 0 && value > -accuracy)
-            {
+            } else if (value < 0 && value > -accuracy) {
                 return 0;
-            }
-            else
-            {
+            } else {
                 value = significantFigures(value, 3);
                 return value;
             }
         }
 
-        public double getPercentagesOpp(double XYZ, double X, double Y, double Z, double XOpp, double YOpp, double ZOpp, double X2, double Y2, double Z2, double XOpp2, double YOpp2, double ZOpp2)
-        {
+        public double getPercentagesOpp(double XYZ, double X, double Y, double Z, double XOpp, double YOpp, double ZOpp, double X2, double Y2, double Z2, double XOpp2, double YOpp2, double ZOpp2) {
             double percentages;
 
             double xDiff = Math.Abs(X2 - X);
@@ -232,32 +227,24 @@ namespace deltaKinematics
             double yOppDiff = Math.Abs(YOpp2 - YOpp);
             double zOppDiff = Math.Abs(ZOpp2 - ZOpp);
 
-            if (XYZ == 'X')
-            {
+            if (XYZ == 'X') {
                 percentages = xOppDiff / xDiff;
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else if (XYZ == 'Y')
-            {
+            } else if (XYZ == 'Y') {
                 percentages = yOppDiff / yDiff;
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else if (XYZ == 'Z')
-            {
+            } else if (XYZ == 'Z') {
                 percentages = zOppDiff / zDiff;
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         }
 
-        public double getPercentagesAll(int XYZ, double X, double Y, double Z, double XOpp, double YOpp, double ZOpp, double X2, double Y2, double Z2, double XOpp2, double YOpp2, double ZOpp2)
-        {
+        public double getPercentagesAll(int XYZ, double X, double Y, double Z, double XOpp, double YOpp, double ZOpp, double X2, double Y2, double Z2, double XOpp2, double YOpp2, double ZOpp2) {
             double percentages;
             double xDiff = Math.Abs(X2 - X);
             double yDiff = Math.Abs(Y2 - Y);
@@ -266,36 +253,27 @@ namespace deltaKinematics
             double yOppDiff = Math.Abs(YOpp2 - YOpp);
             double zOppDiff = Math.Abs(ZOpp2 - ZOpp);
 
-            if (XYZ == 1)
-            {
+            if (XYZ == 1) {
                 percentages = (yDiff + zDiff + yOppDiff + zOppDiff) / (xDiff * 4);
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else if (XYZ == 2)
-            {
+            } else if (XYZ == 2) {
                 percentages = (xDiff + zDiff + xOppDiff + zOppDiff) / (yDiff * 4);
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else if (XYZ == 3)
-            {
+            } else if (XYZ == 3) {
                 percentages = (yDiff + xDiff + yOppDiff + xOppDiff) / (zDiff * 4);
                 percentages = checkZero(percentages);
                 return percentages;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         }
 
-        public void calibratePrinter()
-        {
+        public void calibratePrinter() {
             ////////////////////////////////////////////////////////////////////////////
             //XYZ offset percentages****************************************************
-            if (xOppositePercentage > 0)
-            {
+            if (xOppositePercentage > 0) {
                 xOppPerc = xOppositePercentage;
                 yzPerc = yzPercentage;
 
@@ -304,9 +282,7 @@ namespace deltaKinematics
 
                 zOppPerc = zOppositePercentage;
                 xyPerc = xyPercentage;
-            }
-            else
-            {
+            } else {
                 xOppPerc = getPercentagesOpp(1, X, Y, Z, XOpp, YOpp, ZOpp, X2, Y2, Z2, XOpp2, YOpp2, ZOpp2);
                 yzPerc = getPercentagesAll(1, X, Y, Z, XOpp, YOpp, ZOpp, X2, Y2, Z2, XOpp2, YOpp2, ZOpp2);
 
@@ -317,32 +293,29 @@ namespace deltaKinematics
                 xyPerc = getPercentagesAll(3, X, Y, Z, XOpp, YOpp, ZOpp, X4, Y4, Z4, XOpp4, YOpp4, ZOpp4);
 
                 //send data to form
-                document.getElementById('xOppositePercentage').value = xOppPerc;
-                document.getElementById('yzPercentage').value = yzPerc;
-                document.getElementById('yOppositePercentage').value = yOppPerc;
-                document.getElementById('xzPercentage').value = xzPerc;
-                document.getElementById('zOppositePercentage').value = yOppPerc;
-                document.getElementById('xyPercentage').value = xyPerc;
+                //document.getElementById('xOppositePercentage').value = xOppPerc;
+                //document.getElementById('yzPercentage').value = yzPerc;
+                //document.getElementById('yOppositePercentage').value = yOppPerc;
+                //document.getElementById('xzPercentage').value = xzPerc;
+                //document.getElementById('zOppositePercentage').value = yOppPerc;
+                //document.getElementById('xyPercentage').value = xyPerc;
             }
 
             /////////////////////////////////////////////////////////////////////////////////
             //diagonal rod offset percentages************************************************
-            if (delTower > 0 && delOpp > 0)
-            {
+            if (delTower > 0 && delOpp > 0) {
                 deltaTower = delTower;
                 deltaOpp = delOpp;
 
                 deltaTower = Math.Abs(deltaTower);
                 deltaOpp = Math.Abs(deltaOpp);
-            }
-            else
-            {
+            } else {
                 deltaTower = ((X - XTemp5) + (Y - YTemp5) + (Z - ZTemp5)) / 3;
                 deltaOpp = ((XOpp - XOppTemp5) + (YOpp - YOppTemp5) + (ZOpp - ZOppTemp5)) / 3;
 
                 //send data to form
-                document.getElementById('deltaTower').value = deltaTower; // 1/8
-                document.getElementById('deltaOpp').value = deltaOpp; // 1/4
+                //document.getElementById('deltaTower').value = deltaTower; // 1/8
+                //document.getElementById('deltaOpp').value = deltaOpp; // 1/4
 
                 deltaTower = Math.Abs(deltaTower);
                 deltaOpp = Math.Abs(deltaOpp);
@@ -352,15 +325,12 @@ namespace deltaKinematics
             //////////////////////////////////////////////////////////////////////////////
             //HRad is calibrated by increasing the outside edge of the glass by the average differences, this should balance the values with a central point of around zero
 
-            if (HRadManual > 0 || HRadManual < 0)
-            {
+            if (HRadManual > 0 || HRadManual < 0) {
                 HRadRatio = HRadManual;
-            }
-            else
-            {
+            } else {
                 HRadRatio = -(Math.Abs((XTemp1 - X) + (YTemp1 - Y) + (ZTemp1 - Z) + (XOppTemp1 - XOpp) + (YOppTemp1 - YOpp) + (ZOppTemp1 - ZOpp))) / 6;
                 //send data to form
-                document.getElementById('HRadManual').value = HRadRatio;
+                //document.getElementById('HRadManual').value = HRadRatio;
             }
 
             double HRadSA = ((X + XOpp + Y + YOpp + Z + ZOpp) / 6);
@@ -385,35 +355,30 @@ namespace deltaKinematics
             ////////////////////////////////////////////////////////////////////////////////
             //Tower Offset Calibration******************************************************
 
-            if (getSteps > 0)
-            {
+            if (getSteps > 0) {
                 stepsPerMM = getSteps;
-            }
-            else
-            {
+            } else {
                 //retrieve data
-                double motorStepAngle = document.getElementById('stepSize').value;
-                double driverMicroStepping = document.getElementById('microStepping').value;
-                double beltPitch = document.getElementById('beltPitch').value;
-                double toothCount = document.getElementById('toothCount').value;
+                //double motorStepAngle = document.getElementById('stepSize').value;
+                //double driverMicroStepping = document.getElementById('microStepping').value;
+                //double beltPitch = document.getElementById('beltPitch').value;
+                //double toothCount = document.getElementById('toothCount').value;
 
                 stepsPerMM = ((360 / motorStepAngle) * driverMicroStepping) / (beltPitch * toothCount);
 
                 //send data to form
-                document.getElementById('stepsPerMM').value = stepsPerMM;
+                //document.getElementById('stepsPerMM').value = stepsPerMM;
             }
 
             //balance axes - retrieve data
             double offsetXYZ = 1 / 0.66;
 
             int j = 0;
-            while (j < 1)
-            {
+            while (j < 1) {
                 double theoryX = offsetX + X * stepsPerMM * offsetXYZ;
 
                 //correction of one tower allows for XY dimensional accuracy
-                if (X > 0)
-                {
+                if (X > 0) {
                     //if x is positive
                     offsetX = offsetX + X * stepsPerMM * offsetXYZ;
 
@@ -423,9 +388,7 @@ namespace deltaKinematics
                     ZOpp = ZOpp - (X * yzPerc);//0.25
                     YOpp = YOpp - (X * yzPerc);//0.25
                     X = X - X;
-                }
-                else if (theoryX > 0 && X < 0)
-                {
+                } else if (theoryX > 0 && X < 0) {
                     //if x can be decreased
                     offsetX = offsetX + X * stepsPerMM * offsetXYZ;
 
@@ -435,9 +398,7 @@ namespace deltaKinematics
                     ZOpp = ZOpp - (X * yzPerc);//0.25
                     YOpp = YOpp - (X * yzPerc);//0.25
                     X = X - X;
-                }
-                else
-                {
+                } else {
                     //if X is negative
                     offsetY = offsetY - X * stepsPerMM * offsetXYZ;
                     offsetZ = offsetZ - X * stepsPerMM * offsetXYZ;
@@ -453,8 +414,7 @@ namespace deltaKinematics
                 double theoryY = offsetY + Y * stepsPerMM * offsetXYZ;
 
                 //Y
-                if (Y > 0)
-                {
+                if (Y > 0) {
                     offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
 
                     YOpp = YOpp + (Y * yOppPerc);
@@ -463,9 +423,7 @@ namespace deltaKinematics
                     XOpp = XOpp - (Y * xzPerc);
                     ZOpp = ZOpp - (Y * xzPerc);
                     Y = Y - Y;
-                }
-                else if (theoryY > 0 && Y < 0)
-                {
+                } else if (theoryY > 0 && Y < 0) {
                     offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
 
                     YOpp = YOpp + (Y * yOppPerc);
@@ -474,9 +432,7 @@ namespace deltaKinematics
                     XOpp = XOpp - (Y * xzPerc);
                     ZOpp = ZOpp - (Y * xzPerc);
                     Y = Y - Y;
-                }
-                else
-                {
+                } else {
                     offsetX = offsetX - Y * stepsPerMM * offsetXYZ;
                     offsetZ = offsetZ - Y * stepsPerMM * offsetXYZ;
 
@@ -491,8 +447,7 @@ namespace deltaKinematics
                 double theoryZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
                 //Z
-                if (Z > 0)
-                {
+                if (Z > 0) {
                     offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
                     ZOpp = ZOpp + (Z * zOppPerc);
@@ -501,9 +456,7 @@ namespace deltaKinematics
                     XOpp = XOpp - (Z * xyPerc);
                     YOpp = YOpp - (Z * xyPerc);
                     Z = Z - Z;
-                }
-                else if (theoryZ > 0 && Z < 0)
-                {
+                } else if (theoryZ > 0 && Z < 0) {
                     offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
                     ZOpp = ZOpp + (Z * zOppPerc);
@@ -512,9 +465,7 @@ namespace deltaKinematics
                     XOpp = XOpp - (Z * xyPerc);
                     YOpp = YOpp - (Z * xyPerc);
                     Z = Z - Z;
-                }
-                else
-                {
+                } else {
                     offsetY = offsetY - Z * stepsPerMM * offsetXYZ;
                     offsetX = offsetX - Z * stepsPerMM * offsetXYZ;
 
@@ -533,32 +484,27 @@ namespace deltaKinematics
                 YOpp = checkZero(YOpp);
                 ZOpp = checkZero(ZOpp);
 
-                if (X < accuracy && X > -accuracy && Y < accuracy && Y > -accuracy && Z < accuracy && Z > -accuracy)
-                {
+                if (X < accuracy && X > -accuracy && Y < accuracy && Y > -accuracy && Z < accuracy && Z > -accuracy) {
                     j = 1;
                 }
             }
 
             //send data back to form
-            document.getElementById('offsetX').value = Math.Round(offsetX);
-            document.getElementById('offsetY').value = Math.Round(offsetY);
-            document.getElementById('offsetZ').value = Math.Round(offsetZ);
+            //document.getElementById('offsetX').value = Math.Round(offsetX);
+            //document.getElementById('offsetY').value = Math.Round(offsetY);
+            //document.getElementById('offsetZ').value = Math.Round(offsetZ);
 
             ////////////////////////////////////////////////////////////////////////////////
             //Alpha Rotation Calibration****************************************************
             int k = 0;
-            while (k < 1)
-            {
+            while (k < 1) {
                 //X Alpha Rotation
-                if (YOpp > ZOpp)
-                {
+                if (YOpp > ZOpp) {
                     double ZYOppAvg = (YOpp - ZOpp) / 2;
                     A = A + (ZYOppAvg * 1.725); // (0.5/((diff y0 and z0 at X + 0.5)-(diff y0 and z0 at X = 0))) * 2 = 1.75
                     YOpp = YOpp - ZYOppAvg;
                     ZOpp = ZOpp + ZYOppAvg;
-                }
-                else if (YOpp < ZOpp)
-                {
+                } else if (YOpp < ZOpp) {
                     double ZYOppAvg = (ZOpp - YOpp) / 2;
 
                     A = A - (ZYOppAvg * 1.725);
@@ -567,15 +513,12 @@ namespace deltaKinematics
                 }
 
                 //Y Alpha Rotation
-                if (ZOpp > XOpp)
-                {
+                if (ZOpp > XOpp) {
                     double XZOppAvg = (ZOpp - XOpp) / 2;
                     B = B + (XZOppAvg * 1.725);
                     ZOpp = ZOpp - XZOppAvg;
                     XOpp = XOpp + XZOppAvg;
-                }
-                else if (ZOpp < XOpp)
-                {
+                } else if (ZOpp < XOpp) {
                     double XZOppAvg = (XOpp - ZOpp) / 2;
 
                     B = B - (XZOppAvg * 1.725);
@@ -583,15 +526,12 @@ namespace deltaKinematics
                     XOpp = XOpp - XZOppAvg;
                 }
                 //Z Alpha Rotation
-                if (XOpp > YOpp)
-                {
+                if (XOpp > YOpp) {
                     double YXOppAvg = (XOpp - YOpp) / 2;
                     C = C + (YXOppAvg * 1.725);
                     XOpp = XOpp - YXOppAvg;
                     YOpp = YOpp + YXOppAvg;
-                }
-                else if (XOpp < YOpp)
-                {
+                } else if (XOpp < YOpp) {
                     double YXOppAvg = (YOpp - XOpp) / 2;
 
                     C = C - (YXOppAvg * 1.725);
@@ -603,8 +543,7 @@ namespace deltaKinematics
                 double lTow = Math.Min(Math.Min(XOpp, YOpp), ZOpp);
                 double towDiff = hTow - lTow;
 
-                if (towDiff < accuracy && towDiff > -accuracy)
-                {
+                if (towDiff < accuracy && towDiff > -accuracy) {
                     k = 1;
                 }
             }
@@ -615,8 +554,7 @@ namespace deltaKinematics
             double towOppDiff = deltaTower / deltaOpp; //0.5
 
             int i = 0;
-            while (i < 1)
-            {
+            while (i < 1) {
                 double XYZOpp = (XOpp + YOpp + ZOpp) / 3;
                 diagonalRod = diagonalRod + (XYZOpp * diagChange);
                 X = X - towOppDiff * XYZOpp;
@@ -632,17 +570,14 @@ namespace deltaKinematics
                 //hrad
                 HRad = HRad + (XYZ / HRadRatio);
 
-                if (XYZOpp >= 0)
-                {
+                if (XYZOpp >= 0) {
                     X = X - XYZ;
                     Y = Y - XYZ;
                     Z = Z - XYZ;
                     XOpp = XOpp - XYZ;
                     YOpp = YOpp - XYZ;
                     ZOpp = ZOpp - XYZ;
-                }
-                else
-                {
+                } else {
                     X = X + XYZ;
                     Y = Y + XYZ;
                     Z = Z + XYZ;
@@ -659,21 +594,20 @@ namespace deltaKinematics
                 ZOpp = checkZero(ZOpp);
 
                 //XYZ is zero
-                if (XYZOpp < accuracy && XYZOpp > -accuracy && XYZ < accuracy && XYZ > -accuracy)
-                {
+                if (XYZOpp < accuracy && XYZOpp > -accuracy && XYZ < accuracy && XYZ > -accuracy) {
                     i = 1;
                     diagonalRod = checkZero(diagonalRod);
                     //send back to form
-                    document.getElementById('diagonalRod').value = diagonalRod;
+                    //document.getElementById('diagonalRod').value = diagonalRod;
                 }
             }
 
             //send obtained values back to the form*************************************
-            document.getElementById('A').value = checkZero(A);
-            document.getElementById('B').value = checkZero(B);
-            document.getElementById('C').value = checkZero(C);
-            document.getElementById('HRad').value = checkZero(HRad);
-            document.getElementById('HRadManual').value = HRadRatio;
+            //document.getElementById('A').value = checkZero(A);
+            //document.getElementById('B').value = checkZero(B);
+            //document.getElementById('C').value = checkZero(C);
+            //document.getElementById('HRad').value = checkZero(HRad);
+            //document.getElementById('HRadManual').value = HRadRatio;
         }
     }
 }

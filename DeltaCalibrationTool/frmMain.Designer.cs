@@ -66,7 +66,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtStepsPerMM = new System.Windows.Forms.TextBox();
             this.btnCalibrate = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -424,13 +424,13 @@
             this.label18.TabIndex = 20;
             this.label18.Text = "Steps Per MM:";
             // 
-            // textBox7
+            // txtStepsPerMM
             // 
-            this.textBox7.Location = new System.Drawing.Point(160, 296);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 21;
-            this.textBox7.Text = "txtStepsPerMM";
+            this.txtStepsPerMM.Location = new System.Drawing.Point(160, 296);
+            this.txtStepsPerMM.Name = "txtStepsPerMM";
+            this.txtStepsPerMM.Size = new System.Drawing.Size(100, 20);
+            this.txtStepsPerMM.TabIndex = 21;
+            this.txtStepsPerMM.Text = "txtStepsPerMM";
             // 
             // btnCalibrate
             // 
@@ -458,7 +458,7 @@
             this.ClientSize = new System.Drawing.Size(730, 362);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnCalibrate);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtStepsPerMM);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -530,7 +530,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtStepsPerMM;
         private System.Windows.Forms.Button btnCalibrate;
         private System.Windows.Forms.Button btnQuit;
     }

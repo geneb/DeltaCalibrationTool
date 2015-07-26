@@ -34,6 +34,7 @@ namespace DeltaCalibrationTool
             txtTowerYOpp.Text = "";
             txtTowerZ.Text = "";
             txtTowerZOpp.Text = "";
+            
         }
 
         public frmMain()
