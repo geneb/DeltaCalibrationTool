@@ -5,9 +5,102 @@ using System.ComponentModel;
 namespace deltaKinematics
 {
 
-    public class calibrate
+    public class classCalibrate
     {
+        public double A;
+        public double B;
+        public double C;
+        public double HRad;
+        public double measInver;
+        // Base heightmap values
+        public double X;
+        public double Y;
+        public double Z;
+        public double XOpp;
+        public double YOpp;
+        public double ZOpp;
+        // Add one to hrad...
+        public double XTemp1;
+        public double YTemp1;
+        public double ZTemp1;
+        public double XOppTemp1;
+        public double YOppTemp1;
+        public double ZOppTemp1;
+
+        public double HRadManual;
+        public double HRadRatio;
+        public double newA;
+        public double newB;
+        public double newC;
+        public double newDA;
+        public double newDB;
+        public double newDC;
+        public double newHRad;
+
+        public double accuracy;
+        public double getSteps;
+        public double stepsPerMM;
+
+        //XYZ offset
+        public double xOppPerc;
+        public double yzPerc;
+        public double yOppPerc;
+        public double xzPerc;
+        public double zOppPerc;
+        public double xyPerc;
+
+        //diagonal rod
+        public double deltaTower;
+        public double deltaOpp;
+
+        //Find the percentages for XYZ Offset
+        public double offsetX;
+        public double offsetY;
+        public double offsetZ;
+
+        //X offset
+        public double xOppositePercentage;
+        public double yzPercentage;
+        public double X2;
+        public double Y2;
+        public double Z2;
+        public double XOpp2;
+        public double YOpp2;
+        public double ZOpp2;
+
+        //Y offset
+        public double yOppositePercentage;
+        public double xzPercentage;
+        public double X3;
+        public double Y3;
+        public double Z3;
+        public double XOpp3;
+        public double YOpp3;
+        public double ZOpp3;
+
+        //z offset
+        public double zOppositePercentage;
+        public double xyPercentage;
+        public double X4;
+        public double Y4;
+        public double Z4;
+        public double XOpp4;
+        public double YOpp4;
+        public double ZOpp4;
+
+        //find the percentages for diagonal rod offset
+        public double XTemp5;
+        public double YTemp5;
+        public double ZTemp5;
+        public double XOppTemp5;
+        public double YOppTemp5;
+        public double ZOppTemp5;
+        public double delTower;
+        public double delOpp;
+        public double diagonalRod
+            ;
         //RETRIEVE DATA
+        /***************************************
         double A = double.TryParse(document.getElementById('A').value);
         double B = double.TryParse(document.getElementById('B').value);
         double C = double.TryParse(document.getElementById('C').value);
@@ -101,7 +194,7 @@ namespace deltaKinematics
         double delTower = double.TryParse(document.getElementById('deltaTower').value);
         double delOpp = double.TryParse(document.getElementById('deltaOpp').value);
         double diagonalRod = double.TryParse(document.getElementById('diagonalRod').value);
-
+        *************************/
         //significant figures
         public static double significantFigures(double d, int digits)
         {
