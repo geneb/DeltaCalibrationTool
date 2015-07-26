@@ -129,6 +129,7 @@
             this.txtMeasurementInversion.Size = new System.Drawing.Size(100, 20);
             this.txtMeasurementInversion.TabIndex = 2;
             this.txtMeasurementInversion.Text = "txtMeasurementInversion";
+            this.txtMeasurementInversion.Validating += new System.ComponentModel.CancelEventHandler(this.txtMeasurementInversion_Validating);
             // 
             // label4
             // 
@@ -146,6 +147,7 @@
             this.txtDiagRod.Size = new System.Drawing.Size(100, 20);
             this.txtDiagRod.TabIndex = 3;
             this.txtDiagRod.Text = "txtDiagRod";
+            this.txtDiagRod.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiagRod_Validating);
             // 
             // label5
             // 
@@ -163,6 +165,7 @@
             this.txtHorizRadius.Size = new System.Drawing.Size(100, 20);
             this.txtHorizRadius.TabIndex = 4;
             this.txtHorizRadius.Text = "txtHorizRadius";
+            this.txtHorizRadius.Validating += new System.ComponentModel.CancelEventHandler(this.txtHorizRadius_Validating);
             // 
             // groupBox1
             // 
@@ -213,6 +216,7 @@
             this.txtOffsetZ.Size = new System.Drawing.Size(100, 20);
             this.txtOffsetZ.TabIndex = 2;
             this.txtOffsetZ.Text = "txtOffsetZ";
+            this.txtOffsetZ.Validating += new System.ComponentModel.CancelEventHandler(this.txtOffsetZ_Validating);
             // 
             // txtOffsetY
             // 
@@ -221,6 +225,7 @@
             this.txtOffsetY.Size = new System.Drawing.Size(100, 20);
             this.txtOffsetY.TabIndex = 1;
             this.txtOffsetY.Text = "txtOffsetY";
+            this.txtOffsetY.Validating += new System.ComponentModel.CancelEventHandler(this.txtOffsetY_Validating);
             // 
             // txtOffsetX
             // 
@@ -229,6 +234,7 @@
             this.txtOffsetX.Size = new System.Drawing.Size(100, 20);
             this.txtOffsetX.TabIndex = 0;
             this.txtOffsetX.Text = "txtOffsetX";
+            this.txtOffsetX.Validating += new System.ComponentModel.CancelEventHandler(this.txtOffsetX_Validating);
             // 
             // groupBox2
             // 
@@ -279,6 +285,7 @@
             this.txtRotC.Size = new System.Drawing.Size(100, 20);
             this.txtRotC.TabIndex = 2;
             this.txtRotC.Text = "txtRotC";
+            this.txtRotC.Validating += new System.ComponentModel.CancelEventHandler(this.txtRotC_Validating);
             // 
             // txtRotB
             // 
@@ -287,6 +294,7 @@
             this.txtRotB.Size = new System.Drawing.Size(100, 20);
             this.txtRotB.TabIndex = 1;
             this.txtRotB.Text = "txtRotB";
+            this.txtRotB.Validating += new System.ComponentModel.CancelEventHandler(this.txtRotB_Validating);
             // 
             // txtRotA
             // 
@@ -295,6 +303,7 @@
             this.txtRotA.Size = new System.Drawing.Size(100, 20);
             this.txtRotA.TabIndex = 0;
             this.txtRotA.Text = "txtRotA";
+            this.txtRotA.Validating += new System.ComponentModel.CancelEventHandler(this.txtRotA_Validating);
             // 
             // groupBox3
             // 
@@ -378,6 +387,7 @@
             this.txtTowerZOpp.Size = new System.Drawing.Size(100, 20);
             this.txtTowerZOpp.TabIndex = 5;
             this.txtTowerZOpp.Text = "txtTowerZOpp";
+            this.txtTowerZOpp.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerZOpp_Validating);
             // 
             // txtTowerZ
             // 
@@ -386,6 +396,7 @@
             this.txtTowerZ.Size = new System.Drawing.Size(100, 20);
             this.txtTowerZ.TabIndex = 4;
             this.txtTowerZ.Text = "txtTowerZ";
+            this.txtTowerZ.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerZ_Validating);
             // 
             // txtTowerYOpp
             // 
@@ -394,6 +405,7 @@
             this.txtTowerYOpp.Size = new System.Drawing.Size(100, 20);
             this.txtTowerYOpp.TabIndex = 3;
             this.txtTowerYOpp.Text = "txtTowerYOpp";
+            this.txtTowerYOpp.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerYOpp_Validating);
             // 
             // txtTowerY
             // 
@@ -402,6 +414,7 @@
             this.txtTowerY.Size = new System.Drawing.Size(100, 20);
             this.txtTowerY.TabIndex = 2;
             this.txtTowerY.Text = "txtTowerY";
+            this.txtTowerY.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerY_Validating);
             // 
             // txtTowerXOpp
             // 
@@ -410,6 +423,7 @@
             this.txtTowerXOpp.Size = new System.Drawing.Size(100, 20);
             this.txtTowerXOpp.TabIndex = 1;
             this.txtTowerXOpp.Text = "txtTowerXOpp";
+            this.txtTowerXOpp.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerXOpp_Validating);
             // 
             // txtTowerX
             // 
@@ -418,6 +432,7 @@
             this.txtTowerX.Size = new System.Drawing.Size(100, 20);
             this.txtTowerX.TabIndex = 0;
             this.txtTowerX.Text = "txtTowerX";
+            this.txtTowerX.Validating += new System.ComponentModel.CancelEventHandler(this.txtTowerX_Validating);
             // 
             // label18
             // 
@@ -435,6 +450,7 @@
             this.txtStepsPerMM.Size = new System.Drawing.Size(100, 20);
             this.txtStepsPerMM.TabIndex = 5;
             this.txtStepsPerMM.Text = "txtStepsPerMM";
+            this.txtStepsPerMM.Validating += new System.ComponentModel.CancelEventHandler(this.txtStepsPerMM_Validating);
             // 
             // btnCalibrate
             // 
