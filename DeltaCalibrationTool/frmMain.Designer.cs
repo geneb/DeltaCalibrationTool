@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.cboDefaults = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,25 +54,27 @@
             this.txtRotB = new System.Windows.Forms.TextBox();
             this.txtRotA = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtTowerX = new System.Windows.Forms.TextBox();
-            this.txtTowerXOpp = new System.Windows.Forms.TextBox();
-            this.txtTowerY = new System.Windows.Forms.TextBox();
-            this.txtTowerYOpp = new System.Windows.Forms.TextBox();
-            this.txtTowerZ = new System.Windows.Forms.TextBox();
-            this.txtTowerZOpp = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtTowerZOpp = new System.Windows.Forms.TextBox();
+            this.txtTowerZ = new System.Windows.Forms.TextBox();
+            this.txtTowerYOpp = new System.Windows.Forms.TextBox();
+            this.txtTowerY = new System.Windows.Forms.TextBox();
+            this.txtTowerXOpp = new System.Windows.Forms.TextBox();
+            this.txtTowerX = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtStepsPerMM = new System.Windows.Forms.TextBox();
             this.btnCalibrate = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +92,7 @@
             this.cboDefaults.Location = new System.Drawing.Point(160, 17);
             this.cboDefaults.Name = "cboDefaults";
             this.cboDefaults.Size = new System.Drawing.Size(159, 21);
-            this.cboDefaults.TabIndex = 1;
+            this.cboDefaults.TabIndex = 0;
             this.cboDefaults.Text = "cboDefaults";
             // 
             // label2
@@ -106,8 +109,9 @@
             this.txtAccuracy.Location = new System.Drawing.Point(160, 44);
             this.txtAccuracy.Name = "txtAccuracy";
             this.txtAccuracy.Size = new System.Drawing.Size(72, 20);
-            this.txtAccuracy.TabIndex = 3;
+            this.txtAccuracy.TabIndex = 1;
             this.txtAccuracy.Text = "txtAccuracy";
+            this.txtAccuracy.Validating += new System.ComponentModel.CancelEventHandler(this.txtAccuracy_Validating);
             // 
             // label3
             // 
@@ -123,7 +127,7 @@
             this.txtMeasurementInversion.Location = new System.Drawing.Point(160, 70);
             this.txtMeasurementInversion.Name = "txtMeasurementInversion";
             this.txtMeasurementInversion.Size = new System.Drawing.Size(100, 20);
-            this.txtMeasurementInversion.TabIndex = 5;
+            this.txtMeasurementInversion.TabIndex = 2;
             this.txtMeasurementInversion.Text = "txtMeasurementInversion";
             // 
             // label4
@@ -140,7 +144,7 @@
             this.txtDiagRod.Location = new System.Drawing.Point(160, 96);
             this.txtDiagRod.Name = "txtDiagRod";
             this.txtDiagRod.Size = new System.Drawing.Size(100, 20);
-            this.txtDiagRod.TabIndex = 7;
+            this.txtDiagRod.TabIndex = 3;
             this.txtDiagRod.Text = "txtDiagRod";
             // 
             // label5
@@ -157,7 +161,7 @@
             this.txtHorizRadius.Location = new System.Drawing.Point(160, 122);
             this.txtHorizRadius.Name = "txtHorizRadius";
             this.txtHorizRadius.Size = new System.Drawing.Size(100, 20);
-            this.txtHorizRadius.TabIndex = 9;
+            this.txtHorizRadius.TabIndex = 4;
             this.txtHorizRadius.Text = "txtHorizRadius";
             // 
             // groupBox1
@@ -207,7 +211,7 @@
             this.txtOffsetZ.Location = new System.Drawing.Point(218, 36);
             this.txtOffsetZ.Name = "txtOffsetZ";
             this.txtOffsetZ.Size = new System.Drawing.Size(100, 20);
-            this.txtOffsetZ.TabIndex = 19;
+            this.txtOffsetZ.TabIndex = 2;
             this.txtOffsetZ.Text = "txtOffsetZ";
             // 
             // txtOffsetY
@@ -215,7 +219,7 @@
             this.txtOffsetY.Location = new System.Drawing.Point(112, 36);
             this.txtOffsetY.Name = "txtOffsetY";
             this.txtOffsetY.Size = new System.Drawing.Size(100, 20);
-            this.txtOffsetY.TabIndex = 18;
+            this.txtOffsetY.TabIndex = 1;
             this.txtOffsetY.Text = "txtOffsetY";
             // 
             // txtOffsetX
@@ -223,7 +227,7 @@
             this.txtOffsetX.Location = new System.Drawing.Point(6, 36);
             this.txtOffsetX.Name = "txtOffsetX";
             this.txtOffsetX.Size = new System.Drawing.Size(100, 20);
-            this.txtOffsetX.TabIndex = 17;
+            this.txtOffsetX.TabIndex = 0;
             this.txtOffsetX.Text = "txtOffsetX";
             // 
             // groupBox2
@@ -273,7 +277,7 @@
             this.txtRotC.Location = new System.Drawing.Point(218, 36);
             this.txtRotC.Name = "txtRotC";
             this.txtRotC.Size = new System.Drawing.Size(100, 20);
-            this.txtRotC.TabIndex = 25;
+            this.txtRotC.TabIndex = 2;
             this.txtRotC.Text = "txtRotC";
             // 
             // txtRotB
@@ -281,7 +285,7 @@
             this.txtRotB.Location = new System.Drawing.Point(112, 36);
             this.txtRotB.Name = "txtRotB";
             this.txtRotB.Size = new System.Drawing.Size(100, 20);
-            this.txtRotB.TabIndex = 24;
+            this.txtRotB.TabIndex = 1;
             this.txtRotB.Text = "txtRotB";
             // 
             // txtRotA
@@ -289,7 +293,7 @@
             this.txtRotA.Location = new System.Drawing.Point(6, 36);
             this.txtRotA.Name = "txtRotA";
             this.txtRotA.Size = new System.Drawing.Size(100, 20);
-            this.txtRotA.TabIndex = 23;
+            this.txtRotA.TabIndex = 0;
             this.txtRotA.Text = "txtRotA";
             // 
             // groupBox3
@@ -313,89 +317,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tower Heights";
             // 
-            // txtTowerX
+            // label17
             // 
-            this.txtTowerX.Location = new System.Drawing.Point(6, 35);
-            this.txtTowerX.Name = "txtTowerX";
-            this.txtTowerX.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerX.TabIndex = 0;
-            this.txtTowerX.Text = "txtTowerX";
-            // 
-            // txtTowerXOpp
-            // 
-            this.txtTowerXOpp.Location = new System.Drawing.Point(112, 35);
-            this.txtTowerXOpp.Name = "txtTowerXOpp";
-            this.txtTowerXOpp.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerXOpp.TabIndex = 1;
-            this.txtTowerXOpp.Text = "txtTowerXOpp";
-            // 
-            // txtTowerY
-            // 
-            this.txtTowerY.Location = new System.Drawing.Point(218, 35);
-            this.txtTowerY.Name = "txtTowerY";
-            this.txtTowerY.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerY.TabIndex = 2;
-            this.txtTowerY.Text = "txtTowerY";
-            // 
-            // txtTowerYOpp
-            // 
-            this.txtTowerYOpp.Location = new System.Drawing.Point(324, 35);
-            this.txtTowerYOpp.Name = "txtTowerYOpp";
-            this.txtTowerYOpp.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerYOpp.TabIndex = 3;
-            this.txtTowerYOpp.Text = "txtTowerYOpp";
-            // 
-            // txtTowerZ
-            // 
-            this.txtTowerZ.Location = new System.Drawing.Point(430, 35);
-            this.txtTowerZ.Name = "txtTowerZ";
-            this.txtTowerZ.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerZ.TabIndex = 4;
-            this.txtTowerZ.Text = "txtTowerZ";
-            // 
-            // txtTowerZOpp
-            // 
-            this.txtTowerZOpp.Location = new System.Drawing.Point(536, 35);
-            this.txtTowerZOpp.Name = "txtTowerZOpp";
-            this.txtTowerZOpp.Size = new System.Drawing.Size(100, 20);
-            this.txtTowerZOpp.TabIndex = 5;
-            this.txtTowerZOpp.Text = "txtTowerZOpp";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 13);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "X";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(109, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "X Opposite";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(215, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Y";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(321, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Y Opposite";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(533, 19);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Z Opposite";
             // 
             // label16
             // 
@@ -406,14 +335,89 @@
             this.label16.TabIndex = 10;
             this.label16.Text = "Z";
             // 
-            // label17
+            // label15
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(533, 19);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Z Opposite";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(321, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Y Opposite";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(215, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Y";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(109, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "X Opposite";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(15, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "X";
+            // 
+            // txtTowerZOpp
+            // 
+            this.txtTowerZOpp.Location = new System.Drawing.Point(536, 35);
+            this.txtTowerZOpp.Name = "txtTowerZOpp";
+            this.txtTowerZOpp.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerZOpp.TabIndex = 5;
+            this.txtTowerZOpp.Text = "txtTowerZOpp";
+            // 
+            // txtTowerZ
+            // 
+            this.txtTowerZ.Location = new System.Drawing.Point(430, 35);
+            this.txtTowerZ.Name = "txtTowerZ";
+            this.txtTowerZ.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerZ.TabIndex = 4;
+            this.txtTowerZ.Text = "txtTowerZ";
+            // 
+            // txtTowerYOpp
+            // 
+            this.txtTowerYOpp.Location = new System.Drawing.Point(324, 35);
+            this.txtTowerYOpp.Name = "txtTowerYOpp";
+            this.txtTowerYOpp.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerYOpp.TabIndex = 3;
+            this.txtTowerYOpp.Text = "txtTowerYOpp";
+            // 
+            // txtTowerY
+            // 
+            this.txtTowerY.Location = new System.Drawing.Point(218, 35);
+            this.txtTowerY.Name = "txtTowerY";
+            this.txtTowerY.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerY.TabIndex = 2;
+            this.txtTowerY.Text = "txtTowerY";
+            // 
+            // txtTowerXOpp
+            // 
+            this.txtTowerXOpp.Location = new System.Drawing.Point(112, 35);
+            this.txtTowerXOpp.Name = "txtTowerXOpp";
+            this.txtTowerXOpp.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerXOpp.TabIndex = 1;
+            this.txtTowerXOpp.Text = "txtTowerXOpp";
+            // 
+            // txtTowerX
+            // 
+            this.txtTowerX.Location = new System.Drawing.Point(6, 35);
+            this.txtTowerX.Name = "txtTowerX";
+            this.txtTowerX.Size = new System.Drawing.Size(100, 20);
+            this.txtTowerX.TabIndex = 0;
+            this.txtTowerX.Text = "txtTowerX";
             // 
             // label18
             // 
@@ -429,7 +433,7 @@
             this.txtStepsPerMM.Location = new System.Drawing.Point(160, 296);
             this.txtStepsPerMM.Name = "txtStepsPerMM";
             this.txtStepsPerMM.Size = new System.Drawing.Size(100, 20);
-            this.txtStepsPerMM.TabIndex = 21;
+            this.txtStepsPerMM.TabIndex = 5;
             this.txtStepsPerMM.Text = "txtStepsPerMM";
             // 
             // btnCalibrate
@@ -437,7 +441,7 @@
             this.btnCalibrate.Location = new System.Drawing.Point(561, 327);
             this.btnCalibrate.Name = "btnCalibrate";
             this.btnCalibrate.Size = new System.Drawing.Size(75, 23);
-            this.btnCalibrate.TabIndex = 22;
+            this.btnCalibrate.TabIndex = 6;
             this.btnCalibrate.Text = "Calibrate";
             this.btnCalibrate.UseVisualStyleBackColor = true;
             this.btnCalibrate.Click += new System.EventHandler(this.btnCalibrate_Click);
@@ -447,9 +451,14 @@
             this.btnQuit.Location = new System.Drawing.Point(643, 327);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 23);
-            this.btnQuit.TabIndex = 23;
+            this.btnQuit.TabIndex = 7;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
             // 
             // frmMain
             // 
@@ -485,6 +494,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,6 +543,7 @@
         private System.Windows.Forms.TextBox txtStepsPerMM;
         private System.Windows.Forms.Button btnCalibrate;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }
 
